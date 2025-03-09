@@ -1,5 +1,6 @@
 package com.example.wishlistapp
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonColors
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.rememberScaffoldState
@@ -80,7 +82,9 @@ fun AddEditDetailView(
                 }
             )
             Spacer(modifier = Modifier.height(10.dp))
-            Button(onClick = {
+            Button(
+                colors = ButtonDefaults.buttonColors(colorResource(R.color.app_bar_color)),
+                onClick = {
                 if(viewModel.wishTitleState.isNotEmpty() && viewModel.wishDescriptionState.isNotEmpty()) {
                     if(id != 0L) {
                         viewModel.updateWish(
@@ -111,7 +115,8 @@ fun AddEditDetailView(
                     text = if(id != 0L) stringResource(R.string.update_wish) else stringResource(R.string.add_wish),
                     style = TextStyle(
                         fontSize = 18.sp
-                    )
+                    ),
+                    color = colorResource(R.color.white)
                 )
             }
         }
